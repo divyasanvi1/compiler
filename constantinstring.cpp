@@ -1,45 +1,46 @@
 // program to check for constant in a given string
 
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 
 using namespace std;
-bool checkconstant(string s)
+bool checkcons(string s)
 {
-   if(s.empty())
+   if(s.size()==0)
    {
-     return false;
+      return false;
    }
    bool hasdecimal=false;
-   for(auto ch:s)
+   for(int i=0; i<s.size(); i++)
    {
-      if(!isdigit(ch) && ch!='.')
-      {
-        return false;
-      }
-      if(ch=='.')
-      {
-         if(hasdecimal)
-         {
-            return false;
-         }
-         hasdecimal=true;
-      }
+       if((!isdigit(s[i])) && s[i]!='.')
+       {
+           return false;
+       }
+       else if(s[i]=='.')
+       {
+           if(hasdecimal==true)
+           {
+               return false;
+           }
+           hasdecimal=true;
+       }
    }
    return true;
+
 }
 int main()
 {
-     string ans;
-     cout<<"enter a string"<<endl;
-     cin>> ans;
-     if(checkconstant(ans))
-     {
-        cout<<"The string is valid constant"<<endl;
-     }
-     else
-     {
-         cout<<"The string is not valid constant"<<endl;
-     }
-    return 0;
+   string s;
+   cout<<"enter s"<<endl;
+   cin>>s;
+   if(checkcons(s))
+   {
+      cout<<"constant"<<endl;
+   }
+   else
+   {
+       cout<<"Not constant"<<endl;
+   }
+   return 0;
 }

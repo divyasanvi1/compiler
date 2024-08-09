@@ -8,18 +8,11 @@ using namespace std;
 bool checkkeyword(string s)
 {
     unordered_set<string>mp={"int","if","else","float","for","do","while","return"};
-
-    for(int i=0; i<s.size(); i++)
-    {
-        for(int j=i; j<s.size(); j++)
-        {
-            string a=s.substr(i,j);
-            if(mp.find(a)!=mp.end())
+            if(mp.find(s)!=mp.end())
             {
                 return true;
             }
-        }
-    }
+   
     return false;
 }
 int main()

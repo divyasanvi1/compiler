@@ -1,45 +1,52 @@
 //program to check string under a given grammer
-#include <iostream>
-#include <string>
-#include <stack>
 
+#include<iostream>
+#include<stack>
+#include<string>
 using namespace std;
-
-bool isValidString(string &str)
+bool checkstring(string s)
 {
-    stack<char> s;
-    for( auto ch: str)
+    int n=s.size();
+    stack<char>p;
+    if(n==0)
     {
-        if(ch=='a')
+        return true;
+    }
+    for(int i=0;i<s.size();i++)
+    {
+        if(s[i]=='a')
         {
-            s.push(ch);
+            p.push('a');
         }
-        else if(ch=='b')
+        else if(s[i]=='b')
         {
-            if(s.empty())
+            if(p.empty())
             {
                 return false;
             }
-            s.pop();
+            p.pop();
         }
-        else{
-             return false;
+        else
+        {
+            return false;
         }
     }
-    return s.empty();
+    return p.empty();
 }
+
 int main()
 {
-     string ans;
-     cout<<"enter a string"<<endl;
-     cin>> ans;
-     if(isValidString(ans))
-     {
-        cout<<"The string is valid for given grammer"<<endl;
-     }
-     else
-     {
-         cout<<"The string is not valid for given grammer"<<endl;
-     }
-     return 0;
+    string s;
+     cout<<"Enter string :"<<endl;
+    cin>>s;
+    if(checkstring(s))
+    {
+         cout<<"The string is valid"<<endl;
+    }
+    else
+    {
+        cout<<"The string is not valid"<<endl;
+    }
+   return 0;
 }
+//grammer=s->asb|ss|e
